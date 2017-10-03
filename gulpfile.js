@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var $    = require('gulp-load-plugins')();
+var gulpSequence = require('gulp-sequence').use(gulp);
+var panini = require('panini');
 var browserSync = require('browser-sync').create();
 
 var sassPaths = [

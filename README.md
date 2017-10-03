@@ -3,6 +3,45 @@ A test vision of how the EMBL Design Language could feel in function (not yet in
 
 Background issue: https://github.com/EMBL-Design-Language/Sprint-2/issues/6
 
+### Data structure
+
+#### Drive the look
+A legal document about the establishment of EMBL, very rational task and outward facing.
+```
+<meta name="embl:emotion" content="-10" />
+<meta name="embl:external" content="10" />
+```
+
+A freely available online scientific service.
+```
+<meta name="embl:emotion" content="-5" />
+<meta name="embl:external" content="7" />
+```
+
+A web page about scientific service that requires authorisation to access.
+```
+<meta name="embl:emotion" content="-3" />
+<meta name="embl:external" content="4" />
+```
+
+The EMBL news landing page.
+```
+<meta name="embl:emotion" content="6" />
+<meta name="embl:external" content="9" />
+```
+
+#### Drive the navigation structure
+We utilise the Who, What, Where facets to determine a web page's placement within the navigation system
+
+```
+<meta name="embl:active" content="who:ciprianiteam" />
+<meta name="embl:parent-1" content="what:research" />
+<meta name="embl:parent-2" content="where:grenoble" />
+```
+
+##### What about URLs?
+The URL is still a useful organic indication of content's placement within the overall ecosystem and brand, but the role of the content can change over time so a URL cannot be the sole driver of navigation and look.
+
 ### List of pages in this test
 The four flows to trial, and a representative list of sample pages/urls needed
 

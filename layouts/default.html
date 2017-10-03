@@ -1,13 +1,35 @@
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
+    <meta name="embl:emotion" content="{{metaEmotion}}" />
+    <meta name="embl:external" content="{{metaExternal}}" />
+    <meta name="embl:active" content="{{metaActive}}" />
+    <meta name="embl:parent-1" content="{{metaParent1}}" />
+    <meta name="embl:parent-2" content="{{metaParent2}}" />
+
   </head>
   <body class="">
 {{> navigation}}
-{{#markdown}}
-## {{title}}
-{{/markdown}}
 
 {{> body}}
+
+
+
+{{#markdown}}
+## {{title}}
+
+Readout:
+```
+<meta name="embl:emotion" content="{{metaEmotion}}" />
+<meta name="embl:external" content="{{metaExternal}}" />
+<meta name="embl:active" content="{{metaActive}}" />
+<meta name="embl:parent-1" content="{{metaParent1}}" />
+<meta name="embl:parent-2" content="{{metaParent2}}" />
+```
+
+{{/markdown}}
+
+{{> footer}}
+
   </body>
 </html>

@@ -21,4 +21,3 @@ deploy:
   local_dir: build
   on:
     branch: master
- 

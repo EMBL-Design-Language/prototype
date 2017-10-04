@@ -1,7 +1,10 @@
+[![Build Status](https://travis-ci.org/EMBL-Design-Language/prototype.svg?branch=master)](https://travis-ci.org/EMBL-Design-Language/prototype)
+
 # prototype
 A test vision of how the EMBL Design Language could feel in function (not yet in look).
 
-Background issue: https://github.com/EMBL-Design-Language/Sprint-2/issues/6
+- [View the prototype here](https://embl-design-language.github.io/prototype/)
+- [Background reading and discussion](https://github.com/EMBL-Design-Language/Sprint-2/issues/6)
 
 ### Data structure
 

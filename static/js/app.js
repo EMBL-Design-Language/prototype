@@ -353,41 +353,6 @@ function emblTagsNavigation() {
 }
 
 /**
- * As we don't have real pages, we show and hide content depending on the active facet
- */
-function emblActiveContent() {
-  var facetType = facetsPresent.active.split(':')[0];
-  var facetTerm = facetsPresent.active.split(':')[1];
-
-  // prefer the highest level of specificity
-  if ((facetsPresent['parent-1'] != '') && (facetsPresent['parent-2'] != '')) {
-    if ($('#content .active-'+facetTerm+'-'+facetsPresent['parent-1'].split(':')[1]+'-'+facetsPresent['parent-2'].split(':')[1]).length > 0) {
-      $('#content .active-'+facetTerm+'-'+facetsPresent['parent-1'].split(':')[1]+'-'+facetsPresent['parent-2'].split(':')[1]).first().removeClass('hide');
-      return true;
-    }
-  }
-  if (facetsPresent['parent-1'] != '') {
-    if ($('#content .active-'+facetTerm+'-'+facetsPresent['parent-1'].split(':')[1]).length > 0) {
-      $('#content .active-'+facetTerm+'-'+facetsPresent['parent-1'].split(':')[1]).first().removeClass('hide');
-      return true;
-    }
-  }
-  if (facetsPresent['parent-2'] != '') {
-    if ($('#content .active-'+facetTerm+'-'+facetsPresent['parent-2'].split(':')[1]).length > 0) {
-      $('#content .active-'+facetTerm+'-'+facetsPresent['parent-2'].split(':')[1]).first().removeClass('hide');
-      return true;
-    }
-  }
-  if ($('#content .active-'+facetTerm).length > 0) {
-    $('#content .active-'+facetTerm).first().removeClass('hide');
-    return true;
-  }
-
-  // still here? load the generic content
-  $('#content .generic').removeClass('hide');
-}
-
-/**
  * Bootstrap our fake site
  */
 function runPage() {
@@ -405,7 +370,6 @@ function runPage() {
   // Read metatags per page and act accordingly
   // emblTagsRead();
   // emblTagsNavigation();
-  // emblActiveContent();
 
   // Invoke generic foundation JS
   // We currently only use it for the contextual dropdown (which may not be the best way to do the context)

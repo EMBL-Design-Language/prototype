@@ -137,38 +137,6 @@ var facetIndex = {
 }
 
 /**
- * Get URL paramater
- * We'll use this to synthesise a website with one page
- *
- * The meta tag syntax we synthesise is in the format of:
- *   <meta name="embl:facet-active"  content="[A research team]" />
- *   <meta name="embl:facet-parent-1" content="Research" />
- *   <meta name="embl:facet-parent-2" content="EMBL.org" />
- *
- * We fabricate as
- * - EMBL.org homepage
-     http://localhost:3000?facet-active=EMBL.org
- * - Research:Grenoble
-     http://localhost:3000?facet-active=Research&facet-parent-1=Grenoble
- * - Cipriani Team:Research:Grenoble
-     http://localhost:3000?facet-active=Cipriani Team&facet-parent-1=Research&facet-parent-2=EMBL.org
- *
- * Related discussion at https://github.com/EMBL-Design-Language/Sprint-2/issues/11
- *
- * @param {string} name Param to look for
- * @param {string} url Optional specicifc URL to precess.
- */
-function getParameterByName(name, url) {
-  if (!url) url = window.location.href;
-  name = name.replace(/[\[\]]/g, "\\$&");
-  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-     results = regex.exec(url);
-  if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-/**
  * toLowerCase and drop '.', ' '
  * @param {string} val
  */

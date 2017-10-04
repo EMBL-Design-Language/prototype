@@ -33,19 +33,23 @@
 <div class="row padding-top-xlarge">
   <hr/>
   <h3>Readout</h3>
-  <div class="columns medium-3">
+  <div class="columns medium-5">
     {{> emotion-print}}
-  </div>
-  <div class="columns medium-9">
 {{#markdown}}
-```
-<meta name="embl:rational" content="{{metaRational}}" />
-<meta name="embl:external" content="{{metaExternal}}" />
-<meta name="embl:active" content="{{metaActive}}" />
-<meta name="embl:parent-1" content="{{metaParent1}}" />
-<meta name="embl:parent-2" content="{{metaParent2}}" />
-```
+`<meta name="embl:rational" content="{{metaRational}}" />`<br/>
+`<meta name="embl:external" content="{{metaExternal}}" />`
 {{/markdown}}
+  </div>
+  <div class="columns medium-5">
+    <img src="{{root}}assets/three-ws.svg" />
+<br/>Todo: show the active facets as triangle representation.
+{{#markdown}}
+`<meta name="embl:active" content="{{metaActive}}" />`<br/>
+`<meta name="embl:parent-1" content="{{metaParent1}}" />`<br/>
+`<meta name="embl:parent-2" content="{{metaParent2}}" />`<br/>
+{{/markdown}}
+  </div>
+  <div class="columns medium-2">
   </div>
 
 

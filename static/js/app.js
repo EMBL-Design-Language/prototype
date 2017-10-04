@@ -146,29 +146,28 @@ function cleanString(val) {
 }
 
 /**
- * Indicate which metatags are currently active.
- * You just need a div with class 'metatag-readout'
- * This will also write the tags to the <head>
+ * Gather which facets are active on the current page.
  */
 function emblTagsRead() {
 
-  var target = $('.metatag-readout');
-  target.html('');
-
   function readTag(processing) {
-    facetsPresent[processing] = cleanString(getParameterByName('facet-'+processing))|| '';
+    var tempActiveFacet = document.getElementsByName('embl:'+processing)[0] || 'null:null';
+    if (tempActiveFacet != 'null:null') {
+      tempActiveFacet = tempActiveFacet.getAttribute("content");
+      facetsPresent[processing] = cleanString(tempActiveFacet);
+    }
     if (facetsPresent[processing] == 'null:null' && processing == 'active') {
       facetsPresent[processing] = 'where:emblorg'; // there should always be an active facet, fallback to embl.org
     }
     if (facetsPresent[processing] != 'null:null') {
-      target.append('&lt;meta name="embl:'+processing+'" content="'+facetsPresent[processing]+'" /&gt; <br/>');
-      $('head').prepend('<meta name="embl:'+processing+'" content="'+facetsPresent[processing]+'">')
     }
   }
 
   readTag('active');
   readTag('parent-1');
   readTag('parent-2');
+
+  console.log('debug emblTagsRead()',facetsPresent);
 }
 
 // Add context-specific dropdown to particular menu items.
@@ -336,8 +335,8 @@ function runPage() {
   });
 
   // Read metatags per page and act accordingly
-  // emblTagsRead();
-  // emblTagsNavigation();
+  emblTagsRead();
+  emblTagsNavigation();
 
   // Invoke generic foundation JS
   // We currently only use it for the contextual dropdown (which may not be the best way to do the context)

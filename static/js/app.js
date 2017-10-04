@@ -17,11 +17,13 @@ var facetsPresent = {};
 var facetIndex = {
   'who': {
     'ciprianiteam': {
+      'url':'research/ciprianteam',
       'type':'who',
       'parent':'who:groups',
       'title':'Cipriani Team'
     },
     'groups': {
+      'url':'about/groups',
       'type':'who',
       'parent':'where:emblorg',
       'title':'Groups',
@@ -31,6 +33,7 @@ var facetIndex = {
       // to an idea that's in flux
       {
         'ciprianiteam': {
+          'url':'notset',
           'type':'who',
           'parent':'who:groups',
           'title':'Cipriani Team'
@@ -38,6 +41,7 @@ var facetIndex = {
       }
     },
     'people': {
+      'url':'about/people',
       'type':'who',
       'parent':'where:emblorg',
       'title':'People'
@@ -45,36 +49,43 @@ var facetIndex = {
   },
   'where':{
     'barcelona': {
+      'url':'locations/barclona',
       'type':'where',
       'parent':'locations',
       'title':'Barcelona'
     },
     'grenoble': {
+      'url':'locations/grenoble',
       'type':'where',
       'parent':'locations',
       'title':'Grenoble'
     },
     'hamburg': {
+      'url':'locations/hamburg',
       'type':'where',
       'parent':'locations',
       'title':'Hamburg'
     },
     'hinxton': {
+      'url':'locations/hinxton',
       'type':'where',
       'parent':'locations',
       'title':'Hinxton'
     },
     'heidelberg': {
+      'url':'locations/heidelberg',
       'type':'where',
       'parent':'locations',
       'title':'Heidelberg'
     },
     'rome': {
+      'url':'locations/rome',
       'type':'where',
       'parent':'locations',
       'title':'Rome'
     },
     'emblorg': {
+      'url':'locations',
       'type':'where',
       'parent':'locations',
       'title':'EMBL.org'
@@ -82,31 +93,37 @@ var facetIndex = {
   },
   'what': {
     'administration': {
+      'url':'administration',
       'type':'what',
       'parent':'emblorg',
       'title':'Administration'
     },
     'inspiration': {
+      'url':'inspiration',
       'type':'what',
       'parent':'emblorg',
       'title':'Inspiration'
     },
     'news': {
+      'url':'news',
       'type':'what',
       'parent':'emblorg',
       'title':'News'
     },
     'research': {
+      'url':'research',
       'type':'what',
       'parent':'emblorg',
       'title':'Research'
     },
     'services': {
+      'url':'services',
       'type':'what',
       'parent':'emblorg',
       'title':'Services'
     },
     'training': {
+      'url':'training',
       'type':'what',
       'parent':'emblorg',
       'title':'Training'
@@ -114,6 +131,7 @@ var facetIndex = {
   },
   // allow a non-set state
   'null': {
+    'url':'notset',
     'null': 'null'
   }
 }
@@ -190,32 +208,32 @@ function createDropdownForFacet(facetType,targetTerm) {
   if (facetType == 'null') return false;
 
   $.each(facetIndex[facetType], function( index, value ) {
-   
+
     var targetMenuItem = $('a.'+facetType+'.'+index+'.metatag-present');
 
     // only apply where the facet item is an active meta tag
     if (targetMenuItem.length < 1) return true; // skip to next
     if (targetMenuItem.length > 1) console.warn('There should only be one facet with: .' + facetType +'.'+index+'; proceeding anyways.');
     // console.log(targetMenuItem.length,facetType,index);
-    
+
     var newMenuItem = "";
-    
+
     // newMenuItem += '<li><a class="'+value.type+' '+cleanString(index)+' hide" href="?facet-active='+value.type+":"+index+'">'+value.title+'</a>';
     newMenuItem += '<ul class="menu">';
     if (facetType == 'where') {
-      newMenuItem += '<li><a class="" href="?facet-active=where:emblorg">All EMBL locations</a></li>';        
+      newMenuItem += '<li><a class="" href="?facet-active=where:emblorg">All EMBL locations</a></li>';
     }
     $.each(facetIndex[facetType], function( index, value ) {
       if ((index != 'emblorg') && (index != targetTerm)) { // we've already manually themed EMBL.org; and don't show the active term as an alternative to itself
-        newMenuItem += '<li><a class="'+value.type+' '+cleanString(index)+'" href="?facet-active='+value.type+":"+index+'">➡️ '+value.title+'</a></li>';        
+        newMenuItem += '<li><a class="'+value.type+' '+cleanString(index)+'" href="?facet-active='+value.type+":"+index+'">➡️ '+value.title+'</a></li>';
       }
     });
-      
+
     newMenuItem += '</ul>';
     newMenuItem += '</li>';
 
     $(newMenuItem).insertAfter(targetMenuItem);
-  }); 
+  });
 }
 
 // Metatags that are present on the page get special handling:
@@ -235,9 +253,9 @@ function configureMenuForPresentMetatags(targetType,targetTerm) {
 
   createDropdownForFacet(targetType,targetTerm);
   if (targetType == 'where') {
-    targetElement.parent().addClass('float-left');      
+    targetElement.parent().addClass('float-left');
   } else {
-    targetElement.parent().addClass('float-none');      
+    targetElement.parent().addClass('float-none');
   }
 }
 
@@ -257,7 +275,7 @@ function emblTagsNavigation() {
   var facetActive = facetIndex[tempActive[0]][tempActive[1]] || "null:null";
   var facetParent1 = facetIndex[tempParent1[0]][tempParent1[1]] || "null:null";
   var facetParent2 = facetIndex[tempParent2[0]][tempParent2[1]] || "null:null";
-  
+
   $('h1#facet-active').html('<a href="?facet-active='+facetsPresent['active']+'">'+facetActive.title+'</a>');
   $('title').html(facetActive.title);
 
@@ -272,12 +290,12 @@ function emblTagsNavigation() {
   configureMenuForPresentMetatags(tempActive[0], tempActive[1] );
   configureMenuForPresentMetatags(tempParent1[0],tempParent1[1]);
   configureMenuForPresentMetatags(tempParent2[0],tempParent2[1]);
-  
+
   /**
    * Facets inherit active and parent facets.
    * We exclude inheritence of facets of the same type, that is:
    * a location can't inherit a location and filter by two locations.
-   * 
+   *
    * @param {string} targetType the type of link we are appending to (who, what where)
    */
   function inheritFacets(targetType) {
@@ -289,7 +307,7 @@ function emblTagsNavigation() {
         }
         var tempHref = $(this).attr('href') + targetParentLevel+tempActive[0]+':' + tempActive[1];
         $(this).attr('href',tempHref);
-      });  
+      });
       var targetParentLevel = '&facet-parent-2=';
     }
     if (tempParent1[0] != 'null' && tempParent1[0] != targetType) {
@@ -299,7 +317,7 @@ function emblTagsNavigation() {
         }
         var tempHref = $(this).attr('href') + targetParentLevel+tempParent1[0]+':' + tempParent1[1];
         $(this).attr('href',tempHref);
-      });  
+      });
       var targetParentLevel = '&facet-parent-2=';
     }
     if (tempParent2[0] != 'null' && tempParent2[0] != targetType) {
@@ -309,14 +327,14 @@ function emblTagsNavigation() {
         }
           var tempHref = $(this).attr('href') + targetParentLevel+tempParent2[0]+':' + tempParent2[1];
         $(this).attr('href',tempHref);
-      });  
-    } 
+      });
+    }
   }
 
   inheritFacets('where');
   inheritFacets('who');
   inheritFacets('what');
-  
+
   // activate the default navigation and make it relative to the active item
   function defaultNavEnable(target) {
     $(target).removeClass('hide').prepend('➡️ ').parent().addClass('float-right');
@@ -374,24 +392,24 @@ function emblActiveContent() {
  */
 function runPage() {
   // Add core navigation to the global masthead
-  $.each(facetIndex.who, function( index, value ) {
-    $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="?facet-active='+value.type+":"+index+'">'+value.title+'</a></li>');
-  });
-  $.each(facetIndex.what, function( index, value ) {
-    $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="?facet-active='+value.type+":"+index+'">'+value.title+'</a></li>');
-  });
+  // $.each(facetIndex.who, function( index, value ) {
+  //   $('#masthead #nav').prepend('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/who'+value.url+'">'+value.title+'</a></li>');
+  // });
+  // $.each(facetIndex.what, function( index, value ) {
+  //   $('#masthead #nav').prepend('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/'+value.url+'">'+value.title+'</a></li>');
+  // });
   $.each(facetIndex.where, function( index, value ) {
-    $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="?facet-active='+value.type+":"+index+'">'+value.title+'</a></li>');
+    $('#masthead #nav').prepend('<li><a class="'+value.type+' '+cleanString(index)+' " href="/locations/'+value.url+'">'+value.title+'</a></li>');
   });
 
   // Read metatags per page and act accordingly
-  emblTagsRead();
-  emblTagsNavigation();
-  emblActiveContent();
+  // emblTagsRead();
+  // emblTagsNavigation();
+  // emblActiveContent();
 
   // Invoke generic foundation JS
   // We currently only use it for the contextual dropdown (which may not be the best way to do the context)
-  $(document).foundation();  
+  $(document).foundation();
 }
 
 runPage();

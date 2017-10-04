@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{itle}} > EMBL</title>
-    <link rel="stylesheet" href="css/embl-design-language-framework.css">
+    <link rel="stylesheet" href="{{root}}css/embl-design-language-framework.css">
 
-    <meta name="embl:emotion" content="{{metaEmotion}}" />
+    <meta name="embl:rational" content="{{metaRational}}" />
     <meta name="embl:external" content="{{metaExternal}}" />
     <meta name="embl:active" content="{{metaActive}}" />
     <meta name="embl:parent-1" content="{{metaParent1}}" />
@@ -30,26 +30,35 @@
     </div>
 
 <div class="row padding-top-xlarge">
-  {{#markdown}}
-
-  Readout:
+  <hr/>
+  <h3>Readout</h3>
+  <div class="columns medium-3">
+    {{> emotion-print}}
+  </div>
+  <div class="columns medium-9">
+{{#markdown}}
 ```
-<meta name="embl:emotion" content="{{metaEmotion}}" />
+<meta name="embl:rational" content="{{metaRational}}" />
 <meta name="embl:external" content="{{metaExternal}}" />
 <meta name="embl:active" content="{{metaActive}}" />
 <meta name="embl:parent-1" content="{{metaParent1}}" />
 <meta name="embl:parent-2" content="{{metaParent2}}" />
 ```
-  {{/markdown}}
+{{/markdown}}
+  </div>
+
+
+
+
 </div>
 
 <div class="row padding-top-xlarge">
 {{> footer}}
 </div>
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="{{root}}bower_components/jquery/dist/jquery.js"></script>
     <!-- <script src="bower_components/what-input/dist/what-input.js"></script> -->
-    <script src="bower_components/foundation-sites/dist/js/foundation.js"></script>
-    <script src="js/app.js"></script>
+    <script src="{{root}}bower_components/foundation-sites/dist/js/foundation.js"></script>
+    <script src="{{root}}js/app.js"></script>
   </body>
 </html>

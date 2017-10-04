@@ -11,25 +11,25 @@ A test vision of how the EMBL Design Language could feel in function (not yet in
 #### Drive the look
 A legal document about the establishment of EMBL, very rational task and outward facing.
 ```
-<meta name="embl:emotion" content="-10" />
+<meta name="embl:rational" content="-10" />
 <meta name="embl:external" content="10" />
 ```
 
 A freely available online scientific service.
 ```
-<meta name="embl:emotion" content="-5" />
+<meta name="embl:rational" content="-5" />
 <meta name="embl:external" content="7" />
 ```
 
 A web page about scientific service that requires authorisation to access.
 ```
-<meta name="embl:emotion" content="-3" />
+<meta name="embl:rational" content="-3" />
 <meta name="embl:external" content="4" />
 ```
 
 The EMBL news landing page.
 ```
-<meta name="embl:emotion" content="6" />
+<meta name="embl:rational" content="6" />
 <meta name="embl:external" content="9" />
 ```
 
@@ -87,12 +87,18 @@ If in principle that list of URL fragments looks ok, I'll start having a look at
 
 ## Building this on your machine
 
-You'll need to build this on your local.
+You can preview changes by building on your local and serving on localhost through browserSync.
 
 To install:
 1. `bower install`
 2. `yarn` or `npm install`
 
+You may also need to:
+```
+npm install -g bower
+npm install -g gulp-cli
+```
+
 To develop:
 1. `gulp`: Will build the Sass and serve to your browser with browserSync
-2. Edit `index.html`, a file in `./scss` or `./js`
+2. Edit an html file in `./pages`

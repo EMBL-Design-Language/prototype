@@ -59,35 +59,35 @@
 // Graft in parts of tufte.css
 // This may or may not stick, if it does, move it to its own file
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 p.subtitle {
-    font-style: italic;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    display: block;
-    line-height: 1;
+  font-style: italic;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  display: block;
+  line-height: 1;
 }
 
 .numeral {
-    font-family: et-book-roman-old-style;
+  font-family: et-book-roman-old-style;
 }
 
 /* Chapter Epigraphs */
 div.epigraph {
-    margin: 5em 0;
+  margin: 5em 0;
 }
 
 div.epigraph > blockquote {
-    margin-top: 3em;
-    margin-bottom: 3em;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 div.epigraph > blockquote, div.epigraph > blockquote > p {
@@ -113,120 +113,120 @@ div.epigraph > blockquote > footer > cite {
 // }
 
 blockquote footer {
-    // width: 55%;
-    font-size: 1.1rem;
-    text-align: right;
+  // width: 55%;
+  font-size: 1.1rem;
+  text-align: right;
 }
 
 section>ol, section>ul {
-    width: 45%;
-    -webkit-padding-start: 5%;
-    -webkit-padding-end: 5%;
+  width: 45%;
+  -webkit-padding-start: 5%;
+  -webkit-padding-end: 5%;
 }
 
 figure {
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    // max-width: 55%;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    margin: 0 0 3em 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  // max-width: 55%;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  margin: 0 0 3em 0;
 }
 
 figcaption {
-    float: right;
-    clear: right;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    vertical-align: baseline;
-    position: relative;
-    max-width: 40%;
+  float: right;
+  clear: right;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  vertical-align: baseline;
+  position: relative;
+  max-width: 40%;
 }
 
 figure.fullwidth figcaption {
-    margin-right: 24%;
+  margin-right: 24%;
 }
 
 /* Links: replicate underline that clears descenders */
 .main-content-area a:link,
 .main-content-area a:visited {
-    color: inherit;
+  color: inherit;
 }
 
 .main-content-area a:link {
-    text-decoration: none;
-    background: -webkit-linear-gradient(#ffffff, #ffffff), -webkit-linear-gradient(#ffffff, #ffffff), -webkit-linear-gradient(#333, #333);
-    background: linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff), linear-gradient(#333, #333);
-    -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    background-repeat: no-repeat, no-repeat, repeat-x;
-    text-shadow: 0.03em 0 #ffffff, -0.03em 0 #ffffff, 0 0.03em #ffffff, 0 -0.03em #ffffff, 0.06em 0 #ffffff, -0.06em 0 #ffffff, 0.09em 0 #ffffff, -0.09em 0 #ffffff, 0.12em 0 #ffffff, -0.12em 0 #ffffff, 0.15em 0 #ffffff, -0.15em 0 #ffffff;
-    background-position: 0% 93%, 100% 93%, 0% 93%;
+  text-decoration: none;
+  background: -webkit-linear-gradient(#ffffff, #ffffff), -webkit-linear-gradient(#ffffff, #ffffff), -webkit-linear-gradient(#333, #333);
+  background: linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff), linear-gradient(#333, #333);
+  -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  text-shadow: 0.03em 0 #ffffff, -0.03em 0 #ffffff, 0 0.03em #ffffff, 0 -0.03em #ffffff, 0.06em 0 #ffffff, -0.06em 0 #ffffff, 0.09em 0 #ffffff, -0.09em 0 #ffffff, 0.12em 0 #ffffff, -0.12em 0 #ffffff, 0.15em 0 #ffffff, -0.15em 0 #ffffff;
+  background-position: 0% 93%, 100% 93%, 0% 93%;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    .main-content-area a:link {
-        background-position-y: 87%, 87%, 87%;
-    }
+  .main-content-area a:link {
+    background-position-y: 87%, 87%, 87%;
+  }
 }
 
 .main-content-area a:link::selection {
-    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
-    background: #b4d5fe;
+  text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
+  background: #b4d5fe;
 }
 
 .main-content-area a:link::-moz-selection {
-    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
-    background: #b4d5fe;
+  text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
+  background: #b4d5fe;
 }
 
 /* Sidenotes, margin notes, figures, captions */
 .sidenote, .marginnote {
-    float: right;
-    clear: right;
-    margin-right: -60%;
-    width: 50%;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 1.1rem;
-    line-height: 1.3;
-    vertical-align: baseline;
-    position: relative;
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 50%;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  vertical-align: baseline;
+  position: relative;
 }
 
 .sidenote-number {
-    counter-increment: sidenote-counter;
+  counter-increment: sidenote-counter;
 }
 
 .sidenote-number:after, .sidenote:before {
-    content: counter(sidenote-counter) " ";
-    font-family: et-book-roman-old-style;
-    position: relative;
-    vertical-align: baseline;
+  content: counter(sidenote-counter) " ";
+  font-family: et-book-roman-old-style;
+  position: relative;
+  vertical-align: baseline;
 }
 
 .sidenote-number:after {
-    content: counter(sidenote-counter);
-    font-size: 1rem;
-    top: -0.5rem;
-    left: 0.1rem;
+  content: counter(sidenote-counter);
+  font-size: 1rem;
+  top: -0.5rem;
+  left: 0.1rem;
 }
 
 .sidenote:before {
-    content: counter(sidenote-counter) " ";
-    top: -0.5rem;
+  content: counter(sidenote-counter) " ";
+  top: -0.5rem;
 }
 
 blockquote .sidenote, blockquote .marginnote {
-    margin-right: -82%;
-    min-width: 59%;
-    text-align: left;
+  margin-right: -82%;
+  min-width: 59%;
+  text-align: left;
 }
 
 // p, footer, table {
@@ -429,13 +429,19 @@ a.more {
 h1 {
   // text-transform: capitalize;
   letter-spacing: -2px;
-  
+
 
 }
 .local-masthead {
+  h1 {
+    display: inline-block;
+  }
   a.label {
-    margin-top: 2.5rem;
+    // margin-top: 2.5rem;
     cursor: pointer;
+    position: relative;
+    top: -1rem;
+    margin-left: .5rem;
     &:hover {
       color: #fff;
       opacity: .7;

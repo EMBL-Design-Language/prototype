@@ -245,15 +245,21 @@ function emblTagsNavigation() {
   var facetParent1 = facetIndex[tempParent1[0]][tempParent1[1]] || "null:null";
   var facetParent2 = facetIndex[tempParent2[0]][tempParent2[1]] || "null:null";
 
-  $('h1#facet-active').html('<a href="?facet-active='+facetsPresent['active']+'">'+facetActive.title+'</a>');
-  $('title').html(facetActive.title);
+  // $('h1#facet-active').html('<a href="?facet-active='+facetsPresent['active']+'">'+facetActive.title+'</a>');
+
+  $('title').append( " > " + facetActive.title);
+  $('h1#facet-active').parent().append('<a href="?facet-active='+facetsPresent['active']+'" class="label"> ↖️ ' + facetActive.title + '</a> ');
 
   if (tempParent1[1] != 'null') {
     $('h1#facet-active').parent().append('<a href="?facet-active='+facetsPresent['parent-1']+'" class="label"> ↖️ ' + facetParent1.title + '</a> ');
+    $('title').append(facetParent1.title + " > ");
   }
   if (tempParent2[1] != 'null') {
     $('h1#facet-active').parent().append('<a href="?facet-active='+facetsPresent['parent-2']+'" class="label"> ️️↖️ ' + facetParent2.title + '</a>');
+    $('title').append(facetParent2.title + " > ");
   }
+
+  $('title').append(" > EMBL");
 
   // Indicate active metatag facets
   configureMenuForPresentMetatags(tempActive[0], tempActive[1] );

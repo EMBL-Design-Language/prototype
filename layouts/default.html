@@ -24,9 +24,16 @@
       <h1 id="facet-active">{{title}}</h1>
     </div>
 
-    <div class="row">
+    <div class="row main-content-area">
+      <hr/>
 {{> body}}
     </div>
+
+<div class="row padding-top-xlarge main-content-area">
+  <hr/>
+{{> footer}}
+</div>
+
 
 <div class="row padding-top-xlarge">
   <hr/>
@@ -49,16 +56,8 @@
   </div>
   <div class="columns medium-2">
   </div>
-
-
-
-
 </div>
 
-<div class="row padding-top-xlarge">
-  <hr/>
-{{> footer}}
-</div>
 
     <script src="{{root}}bower_components/jquery/dist/jquery.js"></script>
     <!-- <script src="bower_components/what-input/dist/what-input.js"></script> -->

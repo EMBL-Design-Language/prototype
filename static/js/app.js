@@ -48,50 +48,52 @@ var facetIndex = {
     },
   },
   'where':{
+    'url':'locations',
     'barcelona': {
-      'url':'locations/barclona',
+      'url':'barclona',
       'type':'where',
       'parent':'locations',
       'title':'Barcelona'
     },
     'grenoble': {
-      'url':'locations/grenoble',
+      'url':'grenoble',
       'type':'where',
       'parent':'locations',
       'title':'Grenoble'
     },
     'hamburg': {
-      'url':'locations/hamburg',
+      'url':'hamburg',
       'type':'where',
       'parent':'locations',
       'title':'Hamburg'
     },
     'hinxton': {
-      'url':'locations/hinxton',
+      'url':'hinxton',
       'type':'where',
       'parent':'locations',
       'title':'Hinxton'
     },
     'heidelberg': {
-      'url':'locations/heidelberg',
+      'url':'heidelberg',
       'type':'where',
       'parent':'locations',
       'title':'Heidelberg'
     },
     'rome': {
-      'url':'locations/rome',
+      'url':'rome',
       'type':'where',
       'parent':'locations',
       'title':'Rome'
     },
     'emblorg': {
-      'url':'locations',
+      'url':'',
       'type':'where',
       'parent':'locations',
       'title':'EMBL.org'
     }
   },
   'what': {
+    'url':'',
     'administration': {
       'url':'administration',
       'type':'what',
@@ -188,11 +190,11 @@ function createDropdownForFacet(facetType,targetTerm) {
     // newMenuItem += '<li><a class="'+value.type+' '+cleanString(index)+' hide" href="?facet-active='+value.type+":"+index+'">'+value.title+'</a>';
     newMenuItem += '<ul class="menu">';
     if (facetType == 'where') {
-      newMenuItem += '<li><a class="" href="?facet-active=where:emblorg">All EMBL locations</a></li>';
+      newMenuItem += '<li><a class="" href="/">All EMBL locations</a></li>';
     }
     $.each(facetIndex[facetType], function( index, value ) {
-      if ((index != 'emblorg') && (index != targetTerm)) { // we've already manually themed EMBL.org; and don't show the active term as an alternative to itself
-        newMenuItem += '<li><a class="'+value.type+' '+cleanString(index)+'" href="?facet-active='+value.type+":"+index+'">➡️ '+value.title+'</a></li>';
+      if ((index != 'emblorg') && (index != targetTerm) && (typeof(value) == 'object')) { // we've already manually themed EMBL.org; and don't show the active term as an alternative to itself
+        newMenuItem += '<li><a class="'+value.type+' '+cleanString(index)+'" href="/'+value.parent+"/"+value.url+'">➡️ '+value.title+'</a></li>';
       }
     });
 
@@ -324,15 +326,15 @@ function emblTagsNavigation() {
  */
 function runPage() {
   // Add core navigation to the global masthead
-  // $.each(facetIndex.who, function( index, value ) {
-  //   $('#masthead #nav').prepend('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/who'+value.url+'">'+value.title+'</a></li>');
-  // });
-  // $.each(facetIndex.what, function( index, value ) {
-  //   $('#masthead #nav').prepend('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/'+value.url+'">'+value.title+'</a></li>');
-  // });
   $.each(facetIndex.where, function( index, value ) {
-    $('#masthead #nav').prepend('<li><a class="'+value.type+' '+cleanString(index)+' " href="/locations/'+value.url+'">'+value.title+'</a></li>');
+    $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide " href="/locations/'+value.url+'">'+value.title+'</a></li>');
   });
+  // $.each(facetIndex.what, function( index, value ) {
+  //   $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/'+value.url+'">'+value.title+'</a></li>');
+  // });
+  // $.each(facetIndex.who, function( index, value ) {
+  //   $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/who'+value.url+'">'+value.title+'</a></li>');
+  // });
 
   // Read metatags per page and act accordingly
   emblTagsRead();

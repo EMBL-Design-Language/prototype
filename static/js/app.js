@@ -282,13 +282,15 @@ function emblTagsNavigation() {
    * @param {string} targetType the type of link we are appending to (who, what where)
    */
   function inheritFacets(targetType) {
-    var targetParentLevel = '?facet-parent-1=';
+    // var targetParentLevel = '?facet-parent-1=';
+    var targetParentLevel = '/';
     if (tempActive[0] != 'null' && tempActive[0] != targetType) {
       $('#nav li  a.'+targetType).each( function( index, value ) {
         if ($(this).hasClass('metatag-present')) {
           return true; // present metatags should act as breadcrumbs
         }
-        var tempHref = $(this).attr('href') + targetParentLevel+tempActive[0]+':' + tempActive[1];
+        // var tempHref = $(this).attr('href') + targetParentLevel+tempActive[0]+':' + tempActive[1];
+        var tempHref = $(this).attr('href') + targetParentLevel+tempActive[1];
         $(this).attr('href',tempHref);
       });
       var targetParentLevel = '&facet-parent-2=';
@@ -298,7 +300,8 @@ function emblTagsNavigation() {
         if ($(this).hasClass('metatag-present')) {
           return true; // present metatags should act as breadcrumbs
         }
-        var tempHref = $(this).attr('href') + targetParentLevel+tempParent1[0]+':' + tempParent1[1];
+        // var tempHref = $(this).attr('href') + targetParentLevel+tempParent1[0]+':' + tempParent1[1];
+        var tempHref = $(this).attr('href') + targetParentLevel+tempParent1[1];
         $(this).attr('href',tempHref);
       });
       var targetParentLevel = '&facet-parent-2=';
@@ -308,7 +311,8 @@ function emblTagsNavigation() {
         if ($(this).hasClass('metatag-present')) {
           return true; // present metatags should act as breadcrumbs
         }
-          var tempHref = $(this).attr('href') + targetParentLevel+tempParent2[0]+':' + tempParent2[1];
+        // var tempHref = $(this).attr('href') + targetParentLevel+tempParent2[0]+':' + tempParent2[1];
+        var tempHref = $(this).attr('href') + targetParentLevel+tempParent2[1];
         $(this).attr('href',tempHref);
       });
     }

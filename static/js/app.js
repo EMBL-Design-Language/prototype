@@ -210,6 +210,8 @@ function createDropdownForFacet(facetType,targetTerm) {
 // 1. Dropdown with pivot facets
 // 2. Clicking on the parent deactivates the tag
 function configureMenuForPresentMetatags(targetType,targetTerm) {
+  // for now, we do nothing special with *
+  if (targetTerm == '*') targetTerm = 'null';
   var targetElement = $('#masthead #nav > li > a.'+targetTerm);
   targetElement.addClass('metatag-present strong').removeClass('hide').parent().addClass('float-left');
 
@@ -245,6 +247,10 @@ function emblTagsNavigation() {
   var facetActive = facetIndex[tempActive[0]][tempActive[1]] || "null:null";
   var facetParent1 = facetIndex[tempParent1[0]][tempParent1[1]] || "null:null";
   var facetParent2 = facetIndex[tempParent2[0]][tempParent2[1]] || "null:null";
+
+  // for now do nothins special with wildcard *
+  if (tempParent1[1] == '*') tempParent1[1] = 'null';
+  if (tempParent2[1] == '*') tempParent2[1] = 'null';
 
   // $('h1#facet-active').html('<a href="?facet-active='+facetsPresent['active']+'">'+facetActive.title+'</a>');
 

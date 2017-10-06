@@ -159,6 +159,7 @@ function emblTagsRead() {
       facetsPresent[processing] = cleanString(tempActiveFacet);
     }
     if (facetsPresent[processing] == 'null:null' && processing == 'active') {
+    // if (processing == 'active') {
       facetsPresent[processing] = 'where:emblorg'; // there should always be an active facet, fallback to embl.org
     }
     if (facetsPresent[processing] != 'null:null') {
@@ -194,7 +195,7 @@ function createDropdownForFacet(facetType,targetTerm) {
     }
     $.each(facetIndex[facetType], function( index, value ) {
       if ((index != 'emblorg') && (index != targetTerm) && (typeof(value) == 'object')) { // we've already manually themed EMBL.org; and don't show the active term as an alternative to itself
-        newMenuItem += '<li><a class="'+value.type+' '+cleanString(index)+'" href="/'+value.parent+"/"+value.url+'">➡️ '+value.title+'</a></li>';
+        newMenuItem += '<li><a class="'+value.type+' '+cleanString(index)+'" href="/'+value.parent+"/"+value.url+'">'+value.title+'</a></li>';
       }
     });
 
@@ -210,7 +211,7 @@ function createDropdownForFacet(facetType,targetTerm) {
 // 2. Clicking on the parent deactivates the tag
 function configureMenuForPresentMetatags(targetType,targetTerm) {
   var targetElement = $('#masthead #nav > li > a.'+targetTerm);
-  targetElement.addClass('metatag-present strong').removeClass('hide').prepend('↖️ ️').parent().addClass('float-left');
+  targetElement.addClass('metatag-present strong').removeClass('hide').parent().addClass('float-left');
 
   // For terms that are present, we act as breadcrumbs
   // Remove the parent-1, parent-2
@@ -247,15 +248,16 @@ function emblTagsNavigation() {
 
   // $('h1#facet-active').html('<a href="?facet-active='+facetsPresent['active']+'">'+facetActive.title+'</a>');
 
-  $('title').append( " > " + facetActive.title);
-  $('h1#facet-active').parent().append('<a href="?facet-active='+facetsPresent['active']+'" class="label"> ↖️ ' + facetActive.title + '</a> ');
-
+  // if ((tempActive[1] != 'null') && (tempActive[1] != '*')) {
+  //   $('title').append( " > " + facetActive.title);
+  //   $('h1#facet-active').parent().append('<a href="/'+facetIndex[tempActive[0]].url+"/"+facetActive.url+'" class="label"> ↖️ ' + facetActive.title + '</a> ');
+  // }
   if (tempParent1[1] != 'null') {
-    $('h1#facet-active').parent().append('<a href="?facet-active='+facetsPresent['parent-1']+'" class="label"> ↖️ ' + facetParent1.title + '</a> ');
+    $('h1#facet-active').parent().append('<a href="/'+facetIndex[tempParent1[0]].url+"/"+facetParent1.url+'" class="label"> ↖️ ' + facetParent1.title + '</a> ');
     $('title').append(facetParent1.title + " > ");
   }
   if (tempParent2[1] != 'null') {
-    $('h1#facet-active').parent().append('<a href="?facet-active='+facetsPresent['parent-2']+'" class="label"> ️️↖️ ' + facetParent2.title + '</a>');
+    $('h1#facet-active').parent().append('<a href="/'+facetIndex[tempParent2[0]].url+"/"+facetParent2.url+'" class="label"> ️️↖️ ' + facetParent2.title + '</a>');
     $('title').append(facetParent2.title + " > ");
   }
 
@@ -274,7 +276,7 @@ function emblTagsNavigation() {
    * @param {string} targetType the type of link we are appending to (who, what where)
    */
   function inheritFacets(targetType) {
-    var targetParentLevel = '&facet-parent-1=';
+    var targetParentLevel = '?facet-parent-1=';
     if (tempActive[0] != 'null' && tempActive[0] != targetType) {
       $('#nav li  a.'+targetType).each( function( index, value ) {
         if ($(this).hasClass('metatag-present')) {
@@ -323,8 +325,9 @@ function emblTagsNavigation() {
   defaultNavEnable('#masthead #nav a.services.hide');
   // defaultNavEnable('#masthead #nav a.groups.hide');
   // emblorg doesn't inherit any parents
-  if ((tempActive[0] != 'where') && (tempParent1[0] != 'where') && (tempParent2[0] != 'where'))
+  if ((tempActive[0] != 'where') && (tempParent1[0] != 'where') && (tempParent2[0] != 'where')) {
     $('#masthead #nav a.emblorg.hide').removeClass('hide').addClass('float-left').prepend('🏠 ');
+  }
 }
 
 /**
@@ -335,9 +338,9 @@ function runPage() {
   $.each(facetIndex.where, function( index, value ) {
     $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide " href="/locations/'+value.url+'">'+value.title+'</a></li>');
   });
-  // $.each(facetIndex.what, function( index, value ) {
-  //   $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/'+value.url+'">'+value.title+'</a></li>');
-  // });
+  $.each(facetIndex.what, function( index, value ) {
+    $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/'+value.url+'">'+value.title+'</a></li>');
+  });
   // $.each(facetIndex.who, function( index, value ) {
   //   $('#masthead #nav').append('<li><a class="'+value.type+' '+cleanString(index)+' hide" href="/who'+value.url+'">'+value.title+'</a></li>');
   // });
